@@ -1,0 +1,13 @@
+server:
+  servlet:
+    context-path: /springbootdemo
+spring:
+   mvc:
+     view:
+       prefix: /
+       suffix: .jsp
+   datasource:
+     driver-class-name: com.mysql.jdbc.Driver
+     url: jdbc:mysql://localhost:3306/test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+     username: root
+     password: root
