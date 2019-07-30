@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.OrderDao">
+    <select id="getCount"  resultType="int">
+       select count(purchaseNo) from purchase_master
+    </select>
+    <insert id="addPurchaseMaster" parameterType="java.util.Map">
+    insert into purchase_master(purchaseNo,purchaser,purchaseTime,proposer,applyBranch,totalPrice,explains,createTime)
+    values(#{orderid},#{applyperson},now(),null,#{applydept},#{totalPrice},null,now())
+
+    </insert>
+    <insert id="addPurchaseDetail" parameterType="java.util.List">
+          insert into purchase_detail(purchaseNo,productNo,productNumber,subtotal,createTime) values
+         <foreach collection="list" item="item" separator=",">
+             (#{item.orderid},#{item.productNo},#{item.goodsNum},#{item.totalprice},now())
+         </foreach>
+    </insert>
+
+</mapper>
